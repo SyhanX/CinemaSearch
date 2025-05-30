@@ -64,4 +64,7 @@ dependencies {
     implementation(libs.koin.compose)
     implementation(libs.coil.okhttp)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+    debugImplementation(libs.androidx.ui.tooling)
 }
