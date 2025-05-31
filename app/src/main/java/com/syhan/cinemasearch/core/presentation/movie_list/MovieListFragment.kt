@@ -4,8 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.syhan.cinemasearch.R
 import com.syhan.cinemasearch.databinding.FragmentMovieListBinding
 
 class MovieListFragment : Fragment() {
@@ -23,7 +31,20 @@ class MovieListFragment : Fragment() {
         binding.composeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
             setContent {
-
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Button(
+                        onClick = {
+                            findNavController().navigate(R.id.action_movieListFragment_to_movieDetailsFragment)
+                        }
+                    ) {
+                        Text(
+                            text = "Navigate to details"
+                        )
+                    }
+                }
             }
         }
         return view
