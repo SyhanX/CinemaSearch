@@ -1,9 +1,9 @@
 package com.syhan.cinemasearch.core.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.syhan.cinemasearch.core.data.RetrofitConstants
 import com.syhan.cinemasearch.core.data.remote.MovieApi
 import com.syhan.cinemasearch.core.data.repository.MovieRepositoryImpl
-import com.syhan.cinemasearch.core.di.RetrofitConstants.BASE_URL
 import com.syhan.cinemasearch.core.domain.repository.MovieRepository
 import com.syhan.cinemasearch.core.presentation.movie_list.MovieListViewModel
 import kotlinx.serialization.json.Json
@@ -25,7 +25,7 @@ val appModule = module {
         val customJson = Json { ignoreUnknownKeys = true }
 
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(RetrofitConstants.BASE_URL)
             .client(client)
             .addConverterFactory(customJson.asConverterFactory("application/json".toMediaType()))
             .build()
@@ -39,9 +39,4 @@ val appModule = module {
     viewModel {
         MovieListViewModel(get())
     }
-}
-
-
-object RetrofitConstants {
-    const val BASE_URL = "https://s3-eu-west-1.amazonaws.com/"
 }

@@ -1,12 +1,13 @@
 package com.syhan.cinemasearch.core.data.remote
 
+import com.syhan.cinemasearch.core.data.RetrofitConstants
 import com.syhan.cinemasearch.core.domain.model.MovieList
 import retrofit2.Response
 import retrofit2.http.GET
 
 interface MovieApi {
 
-    @GET("/sequeniatesttask/films.json")
+    @GET(RetrofitConstants.FILMS_PATH)
     suspend fun getMovies() : Response<MovieList>
 
 }
