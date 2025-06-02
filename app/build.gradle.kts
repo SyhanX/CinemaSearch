@@ -68,4 +68,5 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     debugImplementation(libs.androidx.ui.tooling)
     implementation(libs.androidx.material3)
+    implementation(libs.compose.shimmer)
 }
