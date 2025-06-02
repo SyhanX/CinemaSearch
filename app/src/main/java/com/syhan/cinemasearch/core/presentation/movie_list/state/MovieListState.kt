@@ -1,11 +1,11 @@
-package com.syhan.cinemasearch.core.presentation.movie_list
+package com.syhan.cinemasearch.core.presentation.movie_list.state
 
 import androidx.compose.runtime.Immutable
 import com.syhan.cinemasearch.core.data.UiState
-import com.syhan.cinemasearch.core.domain.model.MovieList
 
 @Immutable
 data class MovieListState(
     val uiState: UiState = UiState.ShowLoading,
-    val movies: MovieList = MovieList(emptyList())
+    val movies: List<MovieItemState> = emptyList(),
+    val genres: List<GenreItemState> = emptyList()
 )

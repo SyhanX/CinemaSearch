@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CinemaSearch</string>
+    <string name="films">Фильмы</string>
+    <string name="connection_error">Ошибка подключения сети</string>
+    <string name="action_retry">ПОВТОРИТЬ</string>
+    <string name="genres">Жанры</string>
 </resources>

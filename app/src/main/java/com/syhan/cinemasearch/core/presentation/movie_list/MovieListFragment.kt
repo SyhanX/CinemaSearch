@@ -1,22 +1,16 @@
 package com.syhan.cinemasearch.core.presentation.movie_list
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.android.material.snackbar.Snackbar
+import com.syhan.cinemasearch.R
+import com.syhan.cinemasearch.core.data.UiState
+import com.syhan.cinemasearch.core.data.observeWithFragmentLifecycle
 import com.syhan.cinemasearch.databinding.FragmentMovieListBinding
-import org.koin.androidx.compose.koinViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val TAG = "MovieListFragment"
@@ -32,45 +26,47 @@ class MovieListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMovieListBinding.inflate(inflater, container, false)
         val view = binding.root
+
         binding.composeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent {
-                MovieListScreen {
+            setContent { MovieListScreen(viewModel = viewModel) }
+        }
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.state.observeWithFragmentLifecycle(this) {
+            if (it.uiState == UiState.ShowError) {
+                showErrorSnackBar(view) {
+                    viewModel.setLoadingState()
+                    viewModel.loadMovies()
                 }
             }
         }
-        return view
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-}
 
-@Composable
-fun MovieListScreen(
-    viewModel: MovieListViewModel = koinViewModel(),
-    onClick: () -> Unit,
-) {
-    val state = viewModel.state.collectAsStateWithLifecycle()
-
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+    private fun showErrorSnackBar(
+        view: View,
+        action: () -> Unit,
     ) {
-        Button(
-            onClick = {
-                Log.d(TAG, "onCreateView: ${state.value}")
+        Snackbar.make(view, R.string.connection_error, Snackbar.LENGTH_INDEFINITE)
+            .setAction(R.string.action_retry) {
+                action()
             }
-        ) {
-            Text(
-                text = "Navigate to details"
-            )
-        }
+            .setBackgroundTint(resources.getColor(R.color.dark_grey, null))
+            .setTextColor(resources.getColor(R.color.white, null))
+            .setActionTextColor(resources.getColor(R.color.dark_yellow, null))
+            .show()
     }
 }

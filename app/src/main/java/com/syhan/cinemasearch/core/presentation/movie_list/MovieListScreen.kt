@@ -1,0 +1,65 @@
+package com.syhan.cinemasearch.core.presentation.movie_list
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.syhan.cinemasearch.core.data.UiState
+import com.syhan.cinemasearch.core.presentation.movie_list.components.CombinedList
+import com.syhan.cinemasearch.core.presentation.movie_list.components.MovieListTopBar
+import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
+import com.syhan.cinemasearch.core.presentation.theme.darkYellow
+
+@Composable
+fun MovieListScreen(
+    viewModel: MovieListViewModel,
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+
+    MovieListContent(
+        state = state,
+    )
+}
+
+@Composable
+fun MovieListContent(
+    state: MovieListState,
+) {
+    Scaffold(
+        topBar = { MovieListTopBar() },
+        modifier = Modifier
+            .fillMaxSize()
+    ) { contentPadding ->
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding)
+        ) {
+            when (state.uiState) {
+                UiState.ShowLoading -> {
+                    CircularProgressIndicator(
+                        color = darkYellow
+                    )
+                }
+
+                UiState.ShowError -> {
+                    /* Don't show anything */
+                }
+
+                UiState.ShowContent -> {
+                    CombinedList(
+                        genres = state.genres,
+                        movies = state.movies
+                    )
+                }
+            }
+        }
+    }
+}

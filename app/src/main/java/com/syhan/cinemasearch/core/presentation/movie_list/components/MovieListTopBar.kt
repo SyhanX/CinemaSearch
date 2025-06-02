@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.syhan.cinemasearch.R
 import com.syhan.cinemasearch.core.presentation.theme.navy
@@ -18,7 +19,8 @@ fun MovieListTopBar() {
         title = {
             Text(
                 text = stringResource(R.string.films),
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Medium
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
