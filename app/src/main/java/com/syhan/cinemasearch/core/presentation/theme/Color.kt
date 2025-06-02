@@ -1,6 +1,5 @@
 package com.syhan.cinemasearch.core.presentation.theme
 
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
 val white = Color(0xFFFFFFFF)
