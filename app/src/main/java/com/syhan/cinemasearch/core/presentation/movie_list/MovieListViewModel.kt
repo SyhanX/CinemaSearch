@@ -70,9 +70,14 @@ class MovieListViewModel(
                                 MovieItemState(
                                     id = movie.id,
                                     localizedName = movie.localizedName,
+                                    name = movie.name,
+                                    year = movie.year,
+                                    rating = movie.rating,
                                     imageUrl = movie.imageUrl,
+                                    description = movie.description,
+                                    genres = movie.genres,
                                     onClick = {
-
+                                        // TODO:
                                     }
                                 )
                             },
@@ -100,4 +105,17 @@ class MovieListViewModel(
             )
         }
     }
+
+   /* private fun sortMoviesByGenre(id: Int) {
+        val sortedList = state.value.movies.sortedBy { movie ->
+            movie.genre?.let { genre ->
+                genre == Genre.entries[id]
+            } ?:
+        }
+        _state.update {
+            it.copy(
+                movies = sortedList
+            )
+        }
+    }*/
 }
