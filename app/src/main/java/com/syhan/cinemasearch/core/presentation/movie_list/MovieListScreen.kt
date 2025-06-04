@@ -16,6 +16,8 @@ import com.syhan.cinemasearch.core.presentation.movie_list.components.MovieListT
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
 import com.syhan.cinemasearch.core.presentation.theme.darkYellow
 
+private const val TAG = "MovieListScreen"
+
 @Composable
 fun MovieListScreen(
     viewModel: MovieListViewModel,
@@ -54,9 +56,12 @@ fun MovieListContent(
                 }
 
                 UiState.ShowContent -> {
+                    val shownList = if (state.selectedGenre == null) {
+                        state.movies
+                    } else state.filteredMovies
                     CombinedList(
                         genres = state.genres,
-                        movies = state.movies
+                        movies = shownList
                     )
                 }
             }

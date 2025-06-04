@@ -37,6 +37,7 @@ import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun MovieItem(
+    modifier: Modifier = Modifier,
     name: String,
     imageUrl: String?,
     onClick: () -> Unit,
@@ -47,7 +48,8 @@ fun MovieItem(
     Surface(
         onClick = onClick,
         color = white,
-        shape = RoundedCornerShape(4.dp)
+        shape = RoundedCornerShape(4.dp),
+        modifier = modifier
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

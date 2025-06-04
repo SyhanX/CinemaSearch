@@ -90,7 +90,8 @@ fun CombinedList(
             MovieItem(
                 name = movie.localizedName,
                 imageUrl = movie.imageUrl,
-                onClick = { movie.onClick(movie.id) }
+                onClick = { movie.onClick(movie.id) },
+                modifier = Modifier.animateItem()
             )
         }
     }

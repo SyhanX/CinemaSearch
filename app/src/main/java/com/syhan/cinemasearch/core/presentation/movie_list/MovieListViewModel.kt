@@ -40,6 +40,11 @@ class MovieListViewModel(
                 }
             )
         }
+        _state.update { state ->
+            state.copy(
+                selectedGenre = state.genres.find { it.isSelected }
+            )
+        }
     }
 
     fun loadMovies() {
@@ -81,13 +86,14 @@ class MovieListViewModel(
                                     }
                                 )
                             },
-                            genres = Genre.entries.map {
+                            genres = Genre.entries.map { genre ->
                                 GenreItemState(
-                                    id = it.ordinal,
-                                    name = it.genreName,
+                                    id = genre.ordinal,
+                                    name = genre.genreName,
                                     isSelected = false,
-                                    onClick = {
-                                        selectGenre(it)
+                                    onClick = { id ->
+                                        selectGenre(id)
+                                        filterMoviesByGenre()
                                     }
                                 )
                             }
@@ -106,16 +112,19 @@ class MovieListViewModel(
         }
     }
 
-   /* private fun sortMoviesByGenre(id: Int) {
-        val sortedList = state.value.movies.sortedBy { movie ->
-            movie.genre?.let { genre ->
-                genre == Genre.entries[id]
-            } ?:
-        }
-        _state.update {
-            it.copy(
-                movies = sortedList
+    private fun filterMoviesByGenre() {
+        val filteredList: List<MovieItemState> = state.value.selectedGenre?.let { selectedGenre ->
+            state.value.movies.filter { movie ->
+                movie.genres.contains(
+                    selectedGenre.name.lowercase()
+                )
+            }
+        } ?: emptyList()
+
+        _state.update { state ->
+            state.copy(
+                filteredMovies = filteredList
             )
         }
-    }*/
+    }
 }
