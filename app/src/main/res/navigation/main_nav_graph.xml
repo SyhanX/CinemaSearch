@@ -6,6 +6,7 @@
     app:startDestination="@id/movieListFragment">
 
 
+
     <fragment
         android:id="@+id/movieListFragment"
         android:name="com.syhan.cinemasearch.core.presentation.movie_list.MovieListFragment"
@@ -23,5 +24,10 @@
         <action
             android:id="@+id/action_movieDetailsFragment_to_movieListFragment"
             app:destination="@id/movieListFragment" />
+        <argument
+            android:name="movie_data"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
     </fragment>
 </navigation>

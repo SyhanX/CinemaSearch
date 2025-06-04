@@ -15,23 +15,31 @@ import com.syhan.cinemasearch.core.presentation.movie_list.components.CombinedLi
 import com.syhan.cinemasearch.core.presentation.movie_list.components.MovieListTopBar
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
 import com.syhan.cinemasearch.core.presentation.theme.darkYellow
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 private const val TAG = "MovieListScreen"
 
 @Composable
 fun MovieListScreen(
     viewModel: MovieListViewModel,
+    onMovieClick: (String) -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     MovieListContent(
         state = state,
+        onMovieClick = { id ->
+            val serializedMovieData = Json.encodeToString(state.movies.find { it.id == id })
+            onMovieClick(serializedMovieData)
+        }
     )
 }
 
 @Composable
 fun MovieListContent(
     state: MovieListState,
+    onMovieClick: (Int) -> Unit,
 ) {
     Scaffold(
         topBar = { MovieListTopBar() },
@@ -61,7 +69,10 @@ fun MovieListContent(
                     } else state.filteredMovies
                     CombinedList(
                         genres = state.genres,
-                        movies = shownList
+                        movies = shownList,
+                        onMovieClick = {
+                            onMovieClick(it)
+                        }
                     )
                 }
             }

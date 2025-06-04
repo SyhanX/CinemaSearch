@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.syhan.cinemasearch.R
 import com.syhan.cinemasearch.core.data.UiState
@@ -32,7 +33,16 @@ class MovieListFragment : Fragment() {
 
         binding.composeView.apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
-            setContent { MovieListScreen(viewModel = viewModel) }
+            setContent {
+                MovieListScreen(
+                    viewModel = viewModel,
+                    onMovieClick = { data ->
+                        val action = MovieListFragmentDirections
+                            .actionMovieListFragmentToMovieDetailsFragment(data)
+                        findNavController().navigate(action)
+                    }
+                )
+            }
         }
 
         return view

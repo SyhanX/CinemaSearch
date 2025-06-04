@@ -26,6 +26,7 @@ import com.syhan.cinemasearch.core.presentation.theme.white
 fun CombinedList(
     genres: List<GenreItemState>,
     movies: List<MovieItemState>,
+    onMovieClick: (Int) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -90,7 +91,7 @@ fun CombinedList(
             MovieItem(
                 name = movie.localizedName,
                 imageUrl = movie.imageUrl,
-                onClick = { movie.onClick(movie.id) },
+                onClick = { onMovieClick(movie.id) },
                 modifier = Modifier.animateItem()
             )
         }
