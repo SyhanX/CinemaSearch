@@ -28,7 +28,7 @@ fun GenreItem(
         Text(
             text = name,
             fontSize = 18.sp,
-            lineHeight = TextUnit(2f, TextUnitType.Em),
+            lineHeight = TextUnit(1.8f, TextUnitType.Em),
             modifier = Modifier
                 .padding(
                     horizontal = 16.dp,

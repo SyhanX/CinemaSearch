@@ -51,7 +51,7 @@ fun CombinedList(
                     text = stringResource(R.string.genres),
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
-                    lineHeight = TextUnit(2.2f, TextUnitType.Em)
+                    lineHeight = TextUnit(2f, TextUnitType.Em)
                 )
             }
         }
