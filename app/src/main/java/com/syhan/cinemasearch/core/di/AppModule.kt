@@ -5,6 +5,7 @@ import com.syhan.cinemasearch.core.data.RetrofitConstants
 import com.syhan.cinemasearch.core.data.remote.MovieApi
 import com.syhan.cinemasearch.core.data.repository.MovieRepositoryImpl
 import com.syhan.cinemasearch.core.domain.repository.MovieRepository
+import com.syhan.cinemasearch.core.presentation.movie_details.MovieDetailsViewModel
 import com.syhan.cinemasearch.core.presentation.movie_list.MovieListViewModel
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
@@ -38,5 +39,9 @@ val appModule = module {
 
     viewModel {
         MovieListViewModel(get())
+    }
+
+    viewModel {
+        MovieDetailsViewModel(get())
     }
 }
