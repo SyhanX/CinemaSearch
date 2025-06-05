@@ -35,29 +35,28 @@ private const val TAG = "MovieDetailsScreen"
 
 @Composable
 fun MovieDetailsScreen(
-    viewModel: MovieDetailsViewModel
+    viewModel: MovieDetailsViewModel,
+    navigateUp: () -> Unit,
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     MovieDetailsContent(
         state = state,
-        onNavigate = {}
+        navigateUp = navigateUp
     )
 }
 
 @Composable
 fun MovieDetailsContent(
     state: MovieItemState,
-    onNavigate: () -> Unit,
+    navigateUp: () -> Unit,
 ) {
 
     Scaffold(
         topBar = {
             MovieDetailsAppBar(
                 title = state.name,
-                onNavigate = {
-                    onNavigate()
-                }
+                navigateUp = navigateUp
             )
         }
     ) { contentPadding ->

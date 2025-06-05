@@ -21,7 +21,7 @@ import com.syhan.cinemasearch.core.presentation.theme.white
 @Composable
 fun MovieDetailsAppBar(
     title: String,
-    onNavigate: () -> Unit,
+    navigateUp: () -> Unit,
 ) {
     CenterAlignedTopAppBar(
         title = {
@@ -35,7 +35,7 @@ fun MovieDetailsAppBar(
         },
         navigationIcon = {
             IconButton(
-                onClick = onNavigate
+                onClick = navigateUp
             ) {
                 Icon(
                     painter = painterResource(R.drawable.ic_arrow_back),
