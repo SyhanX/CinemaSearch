@@ -65,7 +65,7 @@ fun MovieDetailsContent(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             modifier = Modifier
                 .padding(contentPadding)
-                .padding(horizontal = 8.dp)
+                .padding(horizontal = 12.dp)
         ) {
             item {
                 Column(
