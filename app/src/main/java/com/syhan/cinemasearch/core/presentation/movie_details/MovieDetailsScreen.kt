@@ -125,7 +125,7 @@ fun MovieDetailsContent(
                 item {
                     Text(
                         text = it,
-                        fontSize = 14.sp,
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
                         color = black
                     )
