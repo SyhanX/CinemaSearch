@@ -14,7 +14,11 @@
         tools:layout="@layout/fragment_movie_list" >
         <action
             android:id="@+id/action_movieListFragment_to_movieDetailsFragment"
-            app:destination="@id/movieDetailsFragment" />
+            app:destination="@id/movieDetailsFragment"
+            app:exitAnim="@anim/fade_out"
+            app:enterAnim="@anim/slide_in_vertically"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out_vertically"/>
     </fragment>
     <fragment
         android:id="@+id/movieDetailsFragment"
