@@ -72,11 +72,11 @@ fun MovieDetailsContent(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Spacer(Modifier.height(16.dp))
+                    Spacer(Modifier.height(24.dp))
                     MovieImage(
                         modifier = Modifier
-                            .height(205.dp)
-                            .width(135.dp),
+                            .height(230.dp)
+                            .width(160.dp),
                         imageUrl = state.imageUrl
                     )
                 }
