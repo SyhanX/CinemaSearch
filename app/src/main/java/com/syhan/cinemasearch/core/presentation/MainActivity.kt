@@ -11,8 +11,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.dark(
-                scrim = resources.getColor(R.color.navy, null),
-            )
+                scrim = resources.getColor(R.color.transparent, null),
+            ),
         )
         setContentView(R.layout.activity_main)
     }

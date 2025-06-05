@@ -30,6 +30,7 @@ import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieItemState
 import com.syhan.cinemasearch.core.presentation.theme.black
 import com.syhan.cinemasearch.core.presentation.theme.grey
 import com.syhan.cinemasearch.core.presentation.theme.navy
+import com.syhan.cinemasearch.core.presentation.theme.white
 
 private const val TAG = "MovieDetailsScreen"
 
@@ -58,7 +59,8 @@ fun MovieDetailsContent(
                 title = state.name,
                 navigateUp = navigateUp
             )
-        }
+        },
+        containerColor = white
     ) { contentPadding ->
         LazyColumn(
             horizontalAlignment = Alignment.Start,
