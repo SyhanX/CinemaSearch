@@ -97,7 +97,7 @@ fun MovieDetailsContent(
                     .removeSuffix("]") + ", "
                 val yearPublished = stringResource(R.string.year_published, state.year)
                 Text(
-                    text = genres + yearPublished,
+                    text = if (state.genres.isEmpty()) yearPublished else genres + yearPublished,
                     fontSize = 16.sp,
                     color = grey,
                     maxLines = Int.MAX_VALUE,
