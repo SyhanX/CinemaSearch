@@ -1,4 +1,4 @@
-package com.syhan.cinemasearch.core.data
+package com.syhan.cinemasearch.core.data.util
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle

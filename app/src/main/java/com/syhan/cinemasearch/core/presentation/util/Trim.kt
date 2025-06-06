@@ -1,4 +1,4 @@
-package com.syhan.cinemasearch.core.data
+package com.syhan.cinemasearch.core.presentation.util
 
 import android.annotation.SuppressLint
 
