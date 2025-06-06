@@ -22,11 +22,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.syhan.cinemasearch.R
-import com.syhan.cinemasearch.core.presentation.state.Genre
 import com.syhan.cinemasearch.core.data.trim
 import com.syhan.cinemasearch.core.presentation.components.MovieImage
 import com.syhan.cinemasearch.core.presentation.movie_details.components.MovieDetailsAppBar
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieItemState
+import com.syhan.cinemasearch.core.presentation.state.Genre
 import com.syhan.cinemasearch.core.presentation.theme.black
 import com.syhan.cinemasearch.core.presentation.theme.grey
 import com.syhan.cinemasearch.core.presentation.theme.navy
@@ -52,7 +52,6 @@ fun MovieDetailsContent(
     state: MovieItemState,
     navigateUp: () -> Unit,
 ) {
-
     Scaffold(
         topBar = {
             MovieDetailsAppBar(
