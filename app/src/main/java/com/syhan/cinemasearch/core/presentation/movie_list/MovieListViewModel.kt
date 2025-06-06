@@ -3,7 +3,7 @@ package com.syhan.cinemasearch.core.presentation.movie_list
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.syhan.cinemasearch.core.data.Genre
-import com.syhan.cinemasearch.core.data.UiState
+import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.core.data.remote.NetworkResult
 import com.syhan.cinemasearch.core.domain.repository.MovieRepository
 import com.syhan.cinemasearch.core.presentation.movie_list.state.GenreItemState

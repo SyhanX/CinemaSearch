@@ -1,6 +1,6 @@
 package com.syhan.cinemasearch.core.presentation.movie_list.state
 
-import com.syhan.cinemasearch.core.data.UiState
+import com.syhan.cinemasearch.core.presentation.state.UiState
 
 data class MovieListState(
     val uiState: UiState = UiState.ShowLoading,
