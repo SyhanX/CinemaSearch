@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
             statusBarStyle = SystemBarStyle.dark(
                 scrim = resources.getColor(R.color.transparent, null),
             ),
+            navigationBarStyle = SystemBarStyle.light(
+                scrim = resources.getColor(R.color.white, null),
+                darkScrim = resources.getColor(R.color.white, null)
+            )
         )
         setContentView(R.layout.activity_main)
     }
