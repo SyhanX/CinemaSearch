@@ -8,7 +8,7 @@ import com.syhan.cinemasearch.core.domain.repository.MovieRepository
 import com.syhan.cinemasearch.core.presentation.movie_list.state.GenreItemState
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieItemState
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
-import com.syhan.cinemasearch.core.presentation.state.Genre
+import com.syhan.cinemasearch.core.presentation.movie_list.state.Genre
 import com.syhan.cinemasearch.core.presentation.state.UiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

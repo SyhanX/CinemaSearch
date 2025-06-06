@@ -26,7 +26,6 @@ import com.syhan.cinemasearch.core.data.trim
 import com.syhan.cinemasearch.core.presentation.components.MovieImage
 import com.syhan.cinemasearch.core.presentation.movie_details.components.MovieDetailsAppBar
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieItemState
-import com.syhan.cinemasearch.core.presentation.state.Genre
 import com.syhan.cinemasearch.core.presentation.theme.black
 import com.syhan.cinemasearch.core.presentation.theme.grey
 import com.syhan.cinemasearch.core.presentation.theme.navy
@@ -146,7 +145,7 @@ private fun DetailsScreenPreview1() {
             year = 2025,
             localizedName = "Мы забыли нанять переводчика",
             rating = 9.8432f,
-            genres = Genre.entries.map { it.genreName },
+            genres = listOf("there", "is", "one", "impostor", "among", "us"),
             description = stringResource(R.string.placeholder_description)
         )
     ) { }
@@ -161,7 +160,7 @@ private fun DetailsScreenPreview2() {
             year = 2025,
             localizedName = "Наш переводчик простудился",
             rating = null,
-            genres = Genre.entries.map { it.genreName }.subList(0, 4),
+            genres = emptyList(),
             description = null
         )
     ) { }

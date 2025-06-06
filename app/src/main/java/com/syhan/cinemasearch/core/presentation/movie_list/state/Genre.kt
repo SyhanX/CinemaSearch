@@ -1,4 +1,4 @@
-package com.syhan.cinemasearch.core.presentation.state
+package com.syhan.cinemasearch.core.presentation.movie_list.state
 
 enum class Genre(val genreName: String) {
     Biography("Биография"),
