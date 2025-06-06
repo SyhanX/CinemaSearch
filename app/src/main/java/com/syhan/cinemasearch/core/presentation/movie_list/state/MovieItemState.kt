@@ -13,6 +13,6 @@ data class MovieItemState(
     val imageUrl: String? = null,
     val description: String? = null,
     val genres: List<String> = emptyList(),
-    @Transient
+    @Transient // This property doesn't need to be serialized
     val onClick: (id: Int) -> Unit = {},
 )
