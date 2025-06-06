@@ -60,7 +60,7 @@ fun ListOfGenresAndMovies(
             items = genres,
             key = { it.id }
         ) { genre ->
-            GenreItem(
+            GenreListItem(
                 name = genre.name,
                 isSelected = genre.isSelected,
                 onItemClick = {

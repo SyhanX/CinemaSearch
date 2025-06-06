@@ -14,7 +14,7 @@ import com.syhan.cinemasearch.core.presentation.theme.darkYellow
 import com.syhan.cinemasearch.core.presentation.theme.white
 
 @Composable
-fun GenreItem(
+fun GenreListItem(
     name: String,
     isSelected: Boolean = false,
     onItemClick: () -> Unit = {}
