@@ -110,7 +110,7 @@ fun ListOfGenresAndMovies(
                 items = movies,
                 key = { movie -> movie.id }
             ) { movie ->
-                MovieItem(
+                MovieListItem(
                     name = movie.localizedName,
                     imageUrl = movie.imageUrl,
                     onClick = { onMovieClick(movie.id) },

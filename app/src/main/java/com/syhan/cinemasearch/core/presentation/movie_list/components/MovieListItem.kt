@@ -22,7 +22,7 @@ import com.syhan.cinemasearch.core.presentation.components.MovieImage
 import com.syhan.cinemasearch.core.presentation.theme.white
 
 @Composable
-fun MovieItem(
+fun MovieListItem(
     modifier: Modifier = Modifier,
     name: String,
     imageUrl: String?,
@@ -65,7 +65,7 @@ fun MovieItem(
 @Composable
 private fun MovieCardPreview() {
     Surface(Modifier.fillMaxSize()) {
-        MovieItem(
+        MovieListItem(
             name = "Movie name that is intentionally very very very long",
             imageUrl = null,
             onClick = {}
