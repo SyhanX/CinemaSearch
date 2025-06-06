@@ -1,7 +1,7 @@
 package com.syhan.cinemasearch.core.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.syhan.cinemasearch.core.data.RetrofitConstants
+import com.syhan.cinemasearch.core.data.remote.RetrofitConstants
 import com.syhan.cinemasearch.core.data.remote.MovieApi
 import com.syhan.cinemasearch.core.data.repository.MovieRepositoryImpl
 import com.syhan.cinemasearch.core.domain.repository.MovieRepository

@@ -14,9 +14,9 @@ suspend fun <T> makeNetworkRequest(
         if (!response.isSuccessful) throw HttpException(response)
 
         NetworkResult.Success(body)
-    } catch (e: IOException) {
+    } catch (_: IOException) {
         NetworkResult.Error(NetworkError.NoInternet)
-    } catch (e: EmptyHttpBodyException) {
+    } catch (_: EmptyHttpBodyException) {
         NetworkResult.Error(NetworkError.EmptyHttpBody)
     } catch (e: HttpException) {
         NetworkResult.Error(NetworkError.UnexpectedHttpResponse(e.code()))
