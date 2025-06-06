@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.syhan.cinemasearch.R
-import com.syhan.cinemasearch.core.data.Genre
+import com.syhan.cinemasearch.core.presentation.state.Genre
 import com.syhan.cinemasearch.core.data.trim
 import com.syhan.cinemasearch.core.presentation.components.MovieImage
 import com.syhan.cinemasearch.core.presentation.movie_details.components.MovieDetailsAppBar
