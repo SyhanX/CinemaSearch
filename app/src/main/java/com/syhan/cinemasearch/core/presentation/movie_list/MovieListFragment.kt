@@ -14,6 +14,7 @@ import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.databinding.FragmentMovieListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@Suppress("unused")
 private const val TAG = "MovieListFragment"
 
 class MovieListFragment : Fragment() {

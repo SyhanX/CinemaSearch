@@ -32,6 +32,7 @@ import com.syhan.cinemasearch.core.presentation.theme.grey
 import com.syhan.cinemasearch.core.presentation.theme.navy
 import com.syhan.cinemasearch.core.presentation.theme.white
 
+@Suppress("unused")
 private const val TAG = "MovieDetailsScreen"
 
 @Composable

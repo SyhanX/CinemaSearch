@@ -10,14 +10,15 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.core.presentation.movie_list.components.ListOfGenresAndMovies
 import com.syhan.cinemasearch.core.presentation.movie_list.components.MovieListTopBar
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
+import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.core.presentation.theme.darkYellow
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+@Suppress("unused")
 private const val TAG = "MovieListScreen"
 
 @Composable
