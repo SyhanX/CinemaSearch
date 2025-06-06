@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.syhan.cinemasearch.core.presentation.state.UiState
-import com.syhan.cinemasearch.core.presentation.movie_list.components.CombinedList
+import com.syhan.cinemasearch.core.presentation.movie_list.components.ListOfGenresAndMovies
 import com.syhan.cinemasearch.core.presentation.movie_list.components.MovieListTopBar
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
 import com.syhan.cinemasearch.core.presentation.theme.darkYellow
@@ -67,7 +67,7 @@ fun MovieListContent(
                     val shownList = if (state.selectedGenre == null) {
                         state.movies
                     } else state.filteredMovies
-                    CombinedList(
+                    ListOfGenresAndMovies(
                         genres = state.genres,
                         movies = shownList,
                         onMovieClick = {

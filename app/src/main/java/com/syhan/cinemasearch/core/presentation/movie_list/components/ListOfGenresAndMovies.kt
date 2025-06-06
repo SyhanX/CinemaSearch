@@ -26,7 +26,7 @@ import com.syhan.cinemasearch.core.presentation.theme.grey
 import com.syhan.cinemasearch.core.presentation.theme.white
 
 @Composable
-fun CombinedList(
+fun ListOfGenresAndMovies(
     genres: List<GenreItemState>,
     movies: List<MovieItemState>,
     onMovieClick: (Int) -> Unit,
