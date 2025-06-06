@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="navy">#FF0E3065</color>
     <color name="dark_yellow">#FFFFC967</color>
-    <color name="grey">#FF4B4B4B</color>
     <color name="dark_grey">#FF232323</color>
     <color name="placeholder_color">#FFCBCBCB</color>
     <color name="transparent">#00000000</color>
