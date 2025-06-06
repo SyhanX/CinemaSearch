@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.syhan.cinemasearch.R
-import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.core.data.observeWithFragmentLifecycle
+import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.databinding.FragmentMovieListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -54,7 +54,6 @@ class MovieListFragment : Fragment() {
         viewModel.state.observeWithFragmentLifecycle(this) {
             if (it.uiState == UiState.ShowError) {
                 showErrorSnackBar(view) {
-                    viewModel.setLoadingState()
                     viewModel.loadMovies()
                 }
             }

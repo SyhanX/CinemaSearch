@@ -2,13 +2,14 @@ package com.syhan.cinemasearch.core.presentation.movie_list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.syhan.cinemasearch.core.presentation.state.Genre
-import com.syhan.cinemasearch.core.presentation.state.UiState
 import com.syhan.cinemasearch.core.data.remote.NetworkResult
+import com.syhan.cinemasearch.core.domain.model.Movie
 import com.syhan.cinemasearch.core.domain.repository.MovieRepository
 import com.syhan.cinemasearch.core.presentation.movie_list.state.GenreItemState
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieItemState
 import com.syhan.cinemasearch.core.presentation.movie_list.state.MovieListState
+import com.syhan.cinemasearch.core.presentation.state.Genre
+import com.syhan.cinemasearch.core.presentation.state.UiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,6 +27,49 @@ class MovieListViewModel(
 
     init {
         loadMovies()
+    }
+
+    private fun setUiState(uiState: UiState) {
+        _state.update {
+            it.copy(uiState = uiState)
+        }
+    }
+
+    private fun setMovieState(movies: List<Movie>) {
+        _state.update {
+            it.copy(
+                movies = movies.map { movie ->
+                    MovieItemState(
+                        id = movie.id,
+                        localizedName = movie.localizedName,
+                        name = movie.name,
+                        year = movie.year,
+                        rating = movie.rating,
+                        imageUrl = movie.imageUrl,
+                        description = movie.description,
+                        genres = movie.genres,
+                    )
+                }.sortedBy { it.localizedName }
+            )
+        }
+    }
+
+    private fun setGenreState() {
+        _state.update {
+            it.copy(
+                genres = Genre.entries.map { genre ->
+                    GenreItemState(
+                        id = genre.ordinal,
+                        name = genre.genreName,
+                        isSelected = false,
+                        onClick = { id ->
+                            selectGenre(id)
+                            filterMoviesByGenre()
+                        }
+                    )
+                }
+            )
+        }
     }
 
     private fun selectGenre(id: Int) {
@@ -49,66 +93,19 @@ class MovieListViewModel(
 
     fun loadMovies() {
         viewModelScope.launch(Dispatchers.IO) {
+            setUiState(UiState.ShowLoading)
             val response = repository.getMovies()
             when (response) {
-                is NetworkResult.Error -> {
-                    _state.update {
-                        it.copy(
-                            uiState = UiState.ShowError
-                        )
-                    }
-                }
-
-                is NetworkResult.Exception -> {
-                    _state.update {
-                        it.copy(
-                            uiState = UiState.ShowError,
-                        )
-                    }
+                is NetworkResult.Error, is NetworkResult.Exception -> {
+                    setUiState(UiState.ShowError)
                 }
 
                 is NetworkResult.Success -> {
-                    _state.update {
-                        it.copy(
-                            uiState = UiState.ShowContent,
-                            movies = response.data.films.map { movie ->
-                                MovieItemState(
-                                    id = movie.id,
-                                    localizedName = movie.localizedName,
-                                    name = movie.name,
-                                    year = movie.year,
-                                    rating = movie.rating,
-                                    imageUrl = movie.imageUrl,
-                                    description = movie.description,
-                                    genres = movie.genres,
-                                    onClick = {
-                                        // TODO:
-                                    }
-                                )
-                            }.sortedBy { it.localizedName },
-                            genres = Genre.entries.map { genre ->
-                                GenreItemState(
-                                    id = genre.ordinal,
-                                    name = genre.genreName,
-                                    isSelected = false,
-                                    onClick = { id ->
-                                        selectGenre(id)
-                                        filterMoviesByGenre()
-                                    }
-                                )
-                            }
-                        )
-                    }
+                    setUiState(UiState.ShowContent)
+                    setMovieState(movies = response.data.films)
+                    setGenreState()
                 }
             }
-        }
-    }
-
-    fun setLoadingState() {
-        _state.update {
-            it.copy(
-                uiState = UiState.ShowLoading
-            )
         }
     }
 

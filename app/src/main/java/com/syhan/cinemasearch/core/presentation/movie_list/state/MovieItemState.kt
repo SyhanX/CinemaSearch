@@ -1,7 +1,6 @@
 package com.syhan.cinemasearch.core.presentation.movie_list.state
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.Transient
 
 @Serializable
 data class MovieItemState(
@@ -13,6 +12,4 @@ data class MovieItemState(
     val imageUrl: String? = null,
     val description: String? = null,
     val genres: List<String> = emptyList(),
-    @Transient // This property doesn't need to be serialized
-    val onClick: (id: Int) -> Unit = {},
 )
