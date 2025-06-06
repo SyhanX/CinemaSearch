@@ -85,7 +85,7 @@ class MovieListViewModel(
                                         // TODO:
                                     }
                                 )
-                            },
+                            }.sortedBy { it.localizedName },
                             genres = Genre.entries.map { genre ->
                                 GenreItemState(
                                     id = genre.ordinal,
@@ -118,7 +118,7 @@ class MovieListViewModel(
                 movie.genres.contains(
                     selectedGenre.name.lowercase()
                 )
-            }
+            }.sortedBy { it.localizedName }
         } ?: emptyList()
 
         _state.update { state ->
