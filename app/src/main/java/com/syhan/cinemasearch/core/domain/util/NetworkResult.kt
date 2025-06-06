@@ -1,4 +1,4 @@
-package com.syhan.cinemasearch.core.data.remote
+package com.syhan.cinemasearch.core.domain.util
 
 sealed interface NetworkResult<T> {
     data class Success<T>(val data: T) : NetworkResult<T>

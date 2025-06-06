@@ -1,5 +1,8 @@
 package com.syhan.cinemasearch.core.data.remote
 
+import com.syhan.cinemasearch.core.domain.util.EmptyHttpBodyException
+import com.syhan.cinemasearch.core.domain.util.NetworkError
+import com.syhan.cinemasearch.core.domain.util.NetworkResult
 import okio.IOException
 import retrofit2.HttpException
 import retrofit2.Response
