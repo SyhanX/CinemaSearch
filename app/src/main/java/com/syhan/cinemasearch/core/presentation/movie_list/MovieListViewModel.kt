@@ -94,15 +94,15 @@ class MovieListViewModel(
 
     fun loadMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            setUiState(UiState.ShowLoading)
+            setUiState(UiState.Loading)
             val response = repository.getMovies()
             when (response) {
                 is NetworkResult.Error, is NetworkResult.Exception -> {
-                    setUiState(UiState.ShowError)
+                    setUiState(UiState.Error)
                 }
 
                 is NetworkResult.Success -> {
-                    setUiState(UiState.ShowContent)
+                    setUiState(UiState.Success)
                     setMovieState(movies = response.data.films)
                     setGenreState()
                 }

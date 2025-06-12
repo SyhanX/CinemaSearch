@@ -54,17 +54,17 @@ fun MovieListContent(
                 .padding(contentPadding)
         ) {
             when (state.uiState) {
-                UiState.ShowLoading -> {
+                UiState.Loading -> {
                     CircularProgressIndicator(
                         color = darkYellow
                     )
                 }
 
-                UiState.ShowError -> {
+                UiState.Error -> {
                     /* Don't show anything */
                 }
 
-                UiState.ShowContent -> {
+                UiState.Success -> {
                     val shownList = if (state.selectedGenre == null) {
                         state.movies
                     } else state.filteredMovies

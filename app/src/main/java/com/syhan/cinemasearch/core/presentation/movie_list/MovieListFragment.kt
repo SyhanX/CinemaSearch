@@ -53,7 +53,7 @@ class MovieListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.state.observeWithFragmentLifecycle(this) {
-            if (it.uiState == UiState.ShowError) {
+            if (it.uiState == UiState.Error) {
                 showErrorSnackBar(view) {
                     viewModel.loadMovies()
                 }
