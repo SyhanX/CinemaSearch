@@ -15,7 +15,7 @@ class MovieDetailsViewModel(
     private val _state = MutableStateFlow(MovieItemState())
     val state = _state.asStateFlow()
 
-    val args = savedStateHandle.get<String>("movie_data")
+    private val args = savedStateHandle.get<String>("movie_data")
 
     init {
         _state.update {
@@ -23,7 +23,7 @@ class MovieDetailsViewModel(
         }
     }
 
-    fun deserializeMovieData(): MovieItemState {
+    private fun deserializeMovieData(): MovieItemState {
         return args?.let {
             Json.decodeFromString<MovieItemState>(it)
         } ?: MovieItemState()
